@@ -8,7 +8,12 @@ const config = process.env.DATABASE ?? {
 	password:"13254600",
 	database:"moviesdb"
 }
-const connection = await mysql.createConnection(config)
+
+let connection
+async function main(){
+	connection = await mysql.createConnection(config)
+}
+main()
 
 // funcion para obtener los generos de una pelicula
 async function setGenres(movie){
