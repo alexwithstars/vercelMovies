@@ -1,6 +1,6 @@
 // imports ----------
-import express  from "express"
-import mysql from "mysql2/promise"
+const express = require("express")
+const mysql = require("mysql2/promise")
 
 
 async function createApp(){

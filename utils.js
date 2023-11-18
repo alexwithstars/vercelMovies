@@ -1,4 +1,5 @@
-import { createRequire } from 'node:module'
+const { createRequire } = require('node:module')
 const require = createRequire(import.meta.url)
 
-export const readJSON = (path) => require(path)
+const readJSON = (path) => require(path)
+module.exports=readJSON

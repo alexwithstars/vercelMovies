@@ -1,9 +1,11 @@
-import {Router} from "express"
-import {viewController} from "../controllers/view.js"
+const {Router} = require("express")
+const {viewController} = require("../controllers/view.js")
 
-export const viewRouter=Router()
+const viewRouter=Router()
 
 // get ----------
 viewRouter.get(	"/:page$",viewController.getPage)
 viewRouter.get("*",viewController.getResource)
 viewRouter.get("*",viewController.error)
+
+module.exports={viewRouter}

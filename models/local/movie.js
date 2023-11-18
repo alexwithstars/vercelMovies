@@ -1,8 +1,7 @@
-import crypto  from "node:crypto"
-import {readJSON} from "../../utils.js"
-const movies = readJSON("./data/movies.json")
+const crypto = require("node:crypto")
+const movies = require("./data/movies.json")
 
-export class MovieModel{
+class MovieModel{
 	static async getAll({genre}){
 		if(genre){
 			return movies.filter(
@@ -43,3 +42,5 @@ export class MovieModel{
 		return movies[index]
 	}
 }
+
+module.exports={MovieModel}

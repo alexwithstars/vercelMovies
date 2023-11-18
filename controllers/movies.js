@@ -1,6 +1,6 @@
-import {validateMovie,partialValidateMovie}  from "../schemas/movies.js"
+const {validateMovie,partialValidateMovie}= require("../schemas/movies.js")
 
-export class MovieController{
+class MovieController{
 	constructor({movieModel}){
 		this.movieModel=movieModel
 	}
@@ -54,3 +54,5 @@ export class MovieController{
 		res.json(response)
 	}
 }
+
+module.exports={MovieController}

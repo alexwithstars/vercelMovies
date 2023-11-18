@@ -1,8 +1,8 @@
-import {Router} from "express"
-import {MovieController} from "../controllers/movies.js"
+const {Router} = require("express")
+const {MovieController} = require("../controllers/movies.js")
 
 
-export function createMovieRouter({movieModel}){
+function createMovieRouter({movieModel}){
 	const moviesRouter = Router()
 	const movieController = new MovieController({movieModel})
 
@@ -22,3 +22,5 @@ export function createMovieRouter({movieModel}){
 
 	return moviesRouter
 }
+
+module.exports={createMovieRouter}

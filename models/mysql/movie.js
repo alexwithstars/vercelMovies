@@ -1,5 +1,5 @@
-import crypto  from "node:crypto"
-import mysql from "mysql2/promise"
+const crypto  = require("node:crypto")
+const mysql = require("mysql2/promise")
 
 const config = process.env.DATABASE ?? {
 	host:"localhost",
@@ -22,7 +22,7 @@ async function setGenres(movie){
 	return movie
 }
 
-export class MovieModel{
+class MovieModel{
 	static async getAll({genre}){
 		if(!genre){
 			let [result] = await connection.query("select * from movie")
@@ -120,3 +120,5 @@ export class MovieModel{
 		return {...curMovie,...input}
 	}
 }
+
+module.exports={MovieModel}

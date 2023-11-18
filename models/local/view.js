@@ -1,7 +1,7 @@
-import fs from "node:fs/promises"
-import {join} from "node:path"
+const fs = require("node:fs/promises")
+const {join} = require("node:path")
 
-export class viewModel{
+class viewModel{
 	static async getResource({url}){
 		try{
 			let response = await fs.readFile(join(process.cwd(),"view",url))
@@ -12,3 +12,5 @@ export class viewModel{
 		}
 	}
 }
+
+module.exports={viewModel}

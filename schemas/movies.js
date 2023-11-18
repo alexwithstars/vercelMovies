@@ -1,5 +1,5 @@
-import zod from "zod"
-import {lookup} from "mime-types"
+const zod = require("zod")
+const {lookup} = require("mime-types")
 
 const movieSchema=zod.object({
 	title: zod.string(),
@@ -20,7 +20,7 @@ const movieSchema=zod.object({
 	).refine(value=>value.length>0,{message:"genre cannot be empty"})
 })
 
-export function validateMovie(input){
+function validateMovie(input){
 	if(input.genre){
 		try{
 			input.genre=[...new Set(input.genre.map(entrie=>entrie.toLowerCase()))]
@@ -29,7 +29,7 @@ export function validateMovie(input){
 	return movieSchema.safeParseAsync(input)
 }
 
-export function partialValidateMovie(input){
+function partialValidateMovie(input){
 	if(input.genre){
 		try{
 			input.genre=[...new Set(input.genre.map(entrie=>entrie.toLowerCase()))]
@@ -37,3 +37,5 @@ export function partialValidateMovie(input){
 	}
 	return movieSchema.partial().safeParseAsync(input)
 }
+
+module.exports={validateMovie,partialValidateMovie}

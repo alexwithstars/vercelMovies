@@ -1,11 +1,11 @@
 // imports ----------
-import express  from "express"
-import {createMovieRouter} from "./routes/movies.js"
-import {viewRouter} from "./routes/view.js"
-import {cors} from "./middlewares/cors.js"
+const express = require("express")
+const {createMovieRouter} = require("./routes/movies.js")
+const {viewRouter} = require("./routes/view.js")
+const {cors} = require("./middlewares/cors.js")
 
 
-export function createApp({movieModel}){
+function createApp({movieModel}){
 	// init ----------
 	const app=express()
 	app.disable("x-powered-by")
@@ -36,5 +36,7 @@ export function createApp({movieModel}){
 	})
 }
 
-import {MovieModel} from "./models/mysql/movie.js"
+const {MovieModel} = require("./models/mysql/movie.js")
 createApp({movieModel:MovieModel})
+
+module.exports={createApp}

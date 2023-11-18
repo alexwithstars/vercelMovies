@@ -1,7 +1,7 @@
-import {viewModel} from "../models/local/view.js"
-import {lookup} from "mime-types"
+const {viewModel} = require("../models/local/view.js")
+const {lookup} = require("mime-types")
 
-export class viewController{
+class viewController{
 	static async getPage(req,res,next){
 		const {page}=req.params
 		const response=await viewModel.getResource({url:`../view/${page}.html`})
@@ -25,3 +25,5 @@ export class viewController{
 		next()
 	}
 }
+
+module.exports={viewController}
